@@ -6,13 +6,78 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <LinearLayout
+        android:id="@+id/headerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/blue"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/headerTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="list of your tests: "
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textAllCaps="true"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerLinearLayout" />
+
+    <LinearLayout
+        android:id="@+id/footerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <EditText
+            android:id="@+id/newTestEditText"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter a test name: "
+            android:layout_marginStart="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/getDateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date"
+                android:backgroundTint="@color/blue"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/addTestBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="add"
+                android:backgroundTint="@color/blue"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

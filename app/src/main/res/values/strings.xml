@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ListOfTests</string>
+
+    <string-array name="array">
+        <item>aa</item>
+        <item>aa</item>
+        <item>cc</item>
+    </string-array>
 </resources>
