@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Calendar calendar;
     private ArrayList<Test> tests = new ArrayList<Test>();
+    private ArrayList<Test> sortedTests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +33,30 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         calendar = Calendar.getInstance(); // initialize calendar
-        tests.add(new Test("polish", this.getCalendar(2023, 10, 24)));
         tests.add(new Test("german", this.getCalendar(2023, 10, 25)));
+        tests.add(new Test("polish", this.getCalendar(2023, 10, 24)));
         tests.add(new Test("physics", this.getCalendar(2023, 11, 17)));
         listView = (ListView) findViewById(R.id.listView);
         testNameEditText = (EditText) findViewById(R.id.newTestEditText);
         getDateBtn = (Button) findViewById(R.id.getDateBtn);
         addNewTestBtn = (Button) findViewById(R.id.addTestBtn);
+        tests.sort(((o1, o2) -> {
+            if(o1.getCalendar().before(o2.getCalendar())){
+                return -1;
+            }
+            else if(o1.getCalendar().after(o2.getCalendar())){
+                return 1;
+            }
+            else
+                return 0;
+        }));
 
         ArrayAdapter<Test> arrayAdapter = new ArrayAdapter<Test>(
                 this, android.R.layout.simple_list_item_1, tests
         );
         listView.setAdapter(arrayAdapter);
+
+
     }
 
     private Calendar getCalendar(int year, int month, int day)
